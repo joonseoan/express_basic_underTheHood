@@ -1,6 +1,7 @@
 //const http = require('http');
 const express = require('express');
 const app = express();
+const path = require('path');
 
 const adminRouter = require('./routes/admin_clone');
 const shopRouter = require('./routes/shop_clone');
@@ -18,7 +19,10 @@ app.use(bodyParser.urlencoded({extended: false}));
 // On the other hand, app.get, app.post, app.patch, and etc
 //  do not care about the line location. They allow exact match only. Not top down.
 // app.use(shopRouter)  // works fine.
-app.use(adminRouter);
+// app.use(adminRouter);
+
+// When customized default routing/url is required
+app.use('/admin', adminRouter);
 
 // app.use('/', (req, res, next) => {
 //     console.log('first /');
@@ -127,7 +131,10 @@ app.use((req, res, next) => {
     // it normally controls a 404 error message.
 
     // send() must be last chain.
-    res.status(404).send(`<h1>Page Not Found</h1>`);
+    // res.status(404).send(`<h1>Page Not Found</h1>`);
+
+    console.log(path.join(__dirname));
+    res.status(404).sendFile(path.join(__dirname, 'views', 'pageNotFound.html'));
 
 });
 
