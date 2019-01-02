@@ -11,6 +11,13 @@ const bodyParser = require('body-parser');
 // it reaches out to all router!!! in the same file in express.
 app.use(bodyParser.urlencoded({extended: false}));
 
+
+// Directly forwarding file system!
+// For instance to get a css file in a public folder
+// The user is able to access to the public folder's css file without the permission
+//      because this middleware forward the user request to the public folder.
+app.use(express.static(path.join(__dirname, 'public')));
+
 // [app.use()]
 // As specified below, the line location is important.
 // '/products' first ------> '/' (detail to general)

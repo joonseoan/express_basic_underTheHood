@@ -4,6 +4,8 @@ const express = require('express');
 const router = express.Router();
 const path = require('path');
 
+const rootDirectory = require('../utils/path');
+
 
 //If the methods are different, the same url can be used. 
 
@@ -16,8 +18,12 @@ const path = require('path');
 router.get('/add-products', (req, res, next) => {
     console.log('admin_clone: "/admin/add-products"')
     
+    // 3)
+    // Build the root directory by itself.
+    res.sendFile(path.join(rootDirectory, 'views', 'add-products.html'));
+
     // 2)
-    res.sendFile(path.join(__dirname, '../', 'views', 'add-products.html'));
+    // res.sendFile(path.join(__dirname, '../', 'views', 'add-products.html'));
 
     //1)
     // res.send('<form action="/admin/add-products" method="POST"><input type="text" name="title"><button type="submit">ADD PRODUCTS</button></form>');

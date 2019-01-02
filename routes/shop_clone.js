@@ -2,9 +2,15 @@ const express = require('express');
 const router = express.Router();
 const path = require('path');
 
+const rootDirectory = require('../utils/path');
+
 router.get('/', (req, res, next) => {
     console.log('shop_clone "/"');
     
+    // 3) ***** Build directory by itself
+    //      It also works at windows and mac.
+    res.sendFile(path.join(rootDirectory, 'views', 'shop.html'));
+
     // 2)
     // When sending a file, instead of literal text/string-based html like above
     // Directory criteria must be based on app_clone.js / app.js 
@@ -23,13 +29,13 @@ router.get('/', (req, res, next) => {
     //C:\Users\joona\OneDrive\myApps\node\2ndPhase\express_server\views\shop.html // correct
     console.log(path.join(__dirname, '../', 'views', 'shop.html')); 
 
-    
     // the first parameter 'the current root directory'
     // the second parameter '../' upper level directory current directroy and etc (optional)
     // the third parameter 'folder in the root directory
     // the forth parameter 'the final file' we want to get
-    res.sendFile(path.join(__dirname, '../', 'views', 'shop.html'));
-    
+
+    // *******'..' is better because it works in both windows and mac!!!!
+    // res.sendFile(path.join(__dirname, '..', 'views', 'shop.html'));
     
     // 1)
     // res.send('<html><body><h1>Hello Express</h1></body></html>');
