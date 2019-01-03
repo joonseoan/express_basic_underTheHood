@@ -1,24 +1,16 @@
 const express = require('express');
 const router = express.Router();
+const path = require('path');
 
-router.get('/shop', (req, res, next) => {
+const rootDirectory = require('../utils/path');
 
-    res.send(`
-        <h1>What do want to place an order?</h1>
-        <form action="/orderedItem" method="POST">
-            <label>Type items</label>
-            <input type="text" name="item">
-            <button type="submit">SUBMIT</button>
-        </form>   
-    `);
-
-});
-
-router.post('/orderedItem', (req, res, next) => {
-
-    res.send(`You ordered ${req.body.item}`);
+router.get('/', (req, res, next) => {
+    console.log('shop_clone "/"');
+    
+    // 3) ***** Build directory by itself
+    //      It also works at windows and mac.
+    res.sendFile(path.join(rootDirectory, 'views', 'shopid.html'));
 
 });
-
 
 module.exports = router;

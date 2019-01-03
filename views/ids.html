@@ -1,0 +1,31 @@
+<!-- type html and select html5. The html skeleton will pop up like the following -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/product.css">
+</head>
+<body>
+    <header class="main-header">
+        <nav class="main-header__nav">
+            <ul class="main-header__item-list">
+                <li class="main-header__item"><a href="/" >IDs</a></li>
+                <li class="main-header__item"><a href="/admin/ids" class="active">CHECKOUT ID</a></li>
+            </ul>
+        </nav>
+    </header>  
+    <main>
+        <form class="product-form" action="/admin/id-checkout" method="POST">
+            <div class="form-control">
+                <label for="title">id</label>
+                <input type="text" name="title" id="title">
+            </div>
+            <button type="submit">ID CHECKOUT</button>
+        </form>
+    </main>
+</body>
+</html>

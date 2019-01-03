@@ -1,24 +1,22 @@
 const express = require('express');
 const router = express.Router();
+const path = require('path');
 
-router.get('/', (req, res, next) => {
-    res.send(`
-        <body>
-            <h1>Wecome to Review Page</h1>
-            <div>
-                <form action='id-checkout' method='POST'>
-                    <label>Enter Your ID: </label>
-                    <input type='text' name='id'>
-                    <button type='submit'>SEND</button>
-                </form>
-            </div>
-        </body>
-    `);
+const rootDirectory = require('../utils/path');
+
+
+router.get('/ids', (req, res, next) => {
+
+    console.log('working!!!!!!!!!!!!!!!!')
+
+    res.sendFile(path.join(__dirname, '../', 'views', 'iDs.html'));
+    // res.sendFile(path.join(rootDirectory, 'views', 'ids.html'));
+
 });
 
 router.post('/id-checkout', (req, res, next) => {
     console.log(req.body.id);
-    res.redirect('/');
+    res.redirect('/ids');
 });
 
 module.exports = router;

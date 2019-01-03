@@ -1,13 +1,13 @@
 const express = require('express');
 
-// Simple express router.
+// 'Router()' is a field of express object.
+//      making a simple router
 const router = express.Router();
 const path = require('path');
 
 const rootDirectory = require('../utils/path');
 
-
-//If the methods are different, the same url can be used. 
+// If the methods(GET, POST and etc) are different, the same url can be used. 
 
 // 2) intermediate level
 
@@ -16,7 +16,7 @@ const rootDirectory = require('../utils/path');
 
 // 1) at the begginer's level
 router.get('/add-products', (req, res, next) => {
-    console.log('admin_clone: "/admin/add-products"')
+    console.log('admin_clone: GET, "/admin/add-products"')
     
     // 3)
     // Build the root directory by itself.
@@ -25,14 +25,14 @@ router.get('/add-products', (req, res, next) => {
     // 2)
     // res.sendFile(path.join(__dirname, '../', 'views', 'add-products.html'));
 
-    //1)
+    // 1)
     // res.send('<form action="/admin/add-products" method="POST"><input type="text" name="title"><button type="submit">ADD PRODUCTS</button></form>');
 
 });
 
 router.post('/add-products', (req, res, next) => {
     
-    console.log('admin_clone: "/admin/add_products"');
+    console.log('admin_clone: POST, /admin/add_products"');
     console.log(req.body);
     res.redirect('/');
     
@@ -43,7 +43,6 @@ router.post('/add-products', (req, res, next) => {
 
 // Then, let's talk about views
 
-
 // // 1) at the begginer's level
 // router.get('/admin/add-products', (req, res, next) => {
 //     console.log('admin_clone: "/admin/add-products"')
@@ -52,13 +51,12 @@ router.post('/add-products', (req, res, next) => {
 // });
 
 
-// router.post('/admin/add-products', (req, res, next) => {
-    
+// router.post('/admin/add-products', (req, res, next) => {    
 //     console.log('admin_clone: "/admin/add_products"');
 //     console.log(req.body);
 //     res.redirect('/');
     
-//     // Why it is not working?
+//     // Why it is not working? ********************************************** still question.....****************************************************
 //     // res.setHeader('Location', '/');
 
 // });

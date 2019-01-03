@@ -8,14 +8,17 @@ const shopRouter = require('./routes/shop_clone');
 
 const bodyParser = require('body-parser');
 
-// it reaches out to all router!!! in the same file in express.
+// it reaches out to all router!!! 
+//      because it does not define the specific url (route) here
+//      in the same file in express.
 app.use(bodyParser.urlencoded({extended: false}));
 
-
+// [express.static]
 // Directly forwarding file system!
 // For instance to get a css file in a public folder
-// The user is able to access to the public folder's css file without the permission
-//      because this middleware forward the user request to the public folder.
+// The user is able to access to the 'public' folders css file without the permission
+//      because this middleware forwards the user request to the 'public' folder.
+// Here in this case, html files in views can be the clients that request the css files in 'public'
 app.use(express.static(path.join(__dirname, 'public')));
 
 // [app.use()]
@@ -31,6 +34,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 // When customized default routing/url is required
 app.use('/admin', adminRouter);
 
+
+// **************************************************************************************************************************************************88
 // app.use('/', (req, res, next) => {
 //     console.log('first /');
 
@@ -152,6 +157,7 @@ app.listen(3000, () => {
 
     // app.listen method includes the functions below 
     // For this reason, we do not need to specify them in express.js
+    
     // const server = http.createServer(app);
     // server.listen.apply(server, argument);
 
